@@ -3,6 +3,33 @@ import React, { Component } from 'react';
 import avatar from '../images/avatar.png';
 
 class Card extends Component{
+
+   constructor(){
+     super()
+     this.state = {likes: 0}
+     this.addLike = this.addLike.bind(this);
+     ;
+
+
+   }
+
+   componentDidMount(){
+     this.setState({
+       likes:this.props.likes
+     })
+
+     
+   }
+
+   addLike(){
+    let likes = parseInt(this.state.likes) + 1;
+    this.setState({likes:likes})
+  console.log(likes)
+
+
+   }
+
+
     render(){
         return(
       <div class="column">
@@ -20,10 +47,15 @@ class Card extends Component{
             </div>
           </div>
           <div class="extra content">
-            <a>
-              <i aria-hidden="true" class="like icon"></i>
-              {this.props.likes} Likes
-            </a>
+            <span>
+              <i aria-hidden="true" className="chat icon"></i>10 comments
+            </span>
+
+            <span href="/" className="Right floated botao-like" onClick={this.addLike}>
+              <i aria-hidden="true" className="like icon" ></i> {this.state.likes} like
+              </span>
+             
+            
           </div>
         </div>
       </div>
