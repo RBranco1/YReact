@@ -27,26 +27,26 @@ class App extends Component {
     .then(res => res.json())
     .then((result) => {
       this.setState({lista: result.data})
+
+      
     })
   }
 
   render() {
     return (
       <>
-      
-
         <div className="App">
-          <div class="ui menu inverted fixed">
+          <div className="ui menu inverted fixed">
             <img src={logo} />
-            <a class="item"> Algo</a>
+            <a className="item">Yonia</a>
     <Modal />
-            <div class="ui icon input">
+            <div className="ui icon input">
               <input type="text" placeholder="Buscar..." />
-              <i aria-hidden="true" class="search icon"></i>
+              <i aria-hidden="true" className="search icon"></i>
             </div>
           </div>
           <div id="space">
-          <div class="ui container three column grid" >
+          <div className="ui container three column grid" >
             {this.state.lista.map(function(projeto) {
              return (
          <Card        
@@ -55,7 +55,7 @@ class App extends Component {
          usuario={projeto.usuario}
          descricao={projeto.descricao}
          likes={projeto.likes}
-         id = {projeto.id}
+         
          />
              )
               }

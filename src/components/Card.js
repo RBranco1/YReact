@@ -18,8 +18,10 @@ class Card extends Component{
        likes:this.props.likes
      })
 
-     
+
    }
+
+   
 
    addLike(){
     let likes = parseInt(this.state.likes) + 1;
@@ -52,7 +54,7 @@ class Card extends Component{
             </span>
 
             <span href="/" className="Right floated botao-like" onClick={this.addLike}>
-              <i aria-hidden="true" className="like icon" ></i> {this.state.likes} like
+              <i aria-hidden="true" className="like icon" ></i> {this.state.likes} likes
               </span>
              
             
