@@ -1,40 +1,46 @@
-import React from 'react'
-import { Button, Header, Image, Modal } from 'semantic-ui-react';
-import sunflower from '../images/sunflower.png'
+import React, { Component } from 'react'
+import { Button, Header, Image, Modal , Form} from 'semantic-ui-react';
+import sunflower from '../images/sunflower.png';
+
+class ModalModalExample extends Component{
+  constructor(){
+    super()
+    this.state = {   
+      nome:"",
+      usuario:"",
+      descricao:""
+    }
 
 
-const ModalModalExample = () => (
+
+
+  }
+
+  handleInputChange = ({target}) => this.setState();
+  handleSubmit(evento){
+    evento.preventDefault()
+  };
+
+
+
+  render(){
+    return(
   <Modal trigger={<Button inverted circular>Cadastre-se!</Button>}>
     <Modal.Header>Esta pronto para essa aventura?</Modal.Header>
     <Modal.Content image>
-      <Image wrapped size='medium' src={sunflower}  />
-      <Modal.Description>
-
-        <Header>Insira seus melhores dados!</Header>
-
-        <p>Insira seu nome</p>
-        <div class="ui icon input">
-         <input type="text" placeholder="Nome" />
-        <i aria-hidden="true" class="shield alternate icon"></i>
-        </div>
-
-        <p>Insira o nome do projeto!</p>
-        <div class="ui icon input">
-         <input type="text" placeholder="Yonia" />
-        <i aria-hidden="true" class="user icon"></i>
-        </div>
-
-        <p>Fala brevemente sobre o seu projeto</p>
-        <div class="ui icon input">
-         <input type="text" placeholder="Esse projeto é incrivel" />
-        <i aria-hidden="true" class="address card icon"></i>
-        </div>
-        
-        <Button color='teal' fluid>Cadastrar</Button>
-        
-      </Modal.Description>
+      <Image wrapped size='medium' src={sunflower}  />  
+    <Form onSubmit={this.handleSubmit}>
+      <Form.Input name="nome" 
+      values={this.state.nome} 
+      onChange={this.handleInputChange}
+      label="Nome do projeto" />
+      <Form.Input name="autor" values={this.state.usuario} label="Autor do projeto" />
+      <Form.TextArea name="descricao" values={this.state.descricao} label="Descrição do projeto" />
+      <Button color="teal">Bora!</Button>
+    </Form>
     </Modal.Content>
   </Modal>
-)
-
+    );
+  }
+}
 export default ModalModalExample

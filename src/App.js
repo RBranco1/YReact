@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import logo from './images/flower.png';
-
 import Card from './components/Card';
 import Modal from './components/criarprojeto';
 
@@ -24,12 +23,16 @@ class App extends Component {
 
   componentDidMount() {
     fetch("http://localhost:8080/api/projetos")
-    .then(res => res.json())
-    .then((result) => {
-      this.setState({lista: result.data})
+      .then(res => res.json())
+      .then((result) => {
+        this.setState({ lista: result.data })
 
-      
-    })
+
+      })
+  }
+
+  inserirProjeto() {
+
   }
 
   render() {
@@ -39,35 +42,35 @@ class App extends Component {
           <div className="ui menu inverted fixed">
             <img src={logo} />
             <a className="item">Yonia</a>
-    <Modal />
+            <Modal inserirProjeto={this.inserirProjeto}/>
             <div className="ui icon input">
               <input type="text" placeholder="Buscar..." />
               <i aria-hidden="true" className="search icon"></i>
             </div>
           </div>
           <div id="space">
-          <div className="ui container three column grid" >
-            {this.state.lista.map(function(projeto) {
-             return (
-         <Card        
-         key = {projeto.id}
-         nome={projeto.nome}
-         usuario={projeto.usuario}
-         descricao={projeto.descricao}
-         likes={projeto.likes}
-         
-         />
-             )
-              }
+            <div className="ui container three column grid" >
+              {this.state.lista.map(function (projeto) {
+                return (
+                  <Card
+                    key={projeto.id}
+                    nome={projeto.nome}
+                    usuario={projeto.usuario}
+                    descricao={projeto.descricao}
+                    likes={projeto.likes}
+
+                  />
                 )
-                 }
-          
-        </div>
-        </div>
+              }
+              )
+              }
+
+            </div>
+          </div>
         </div>
       </>
     );
-            }
-          }
+  }
+}
 
 export default App;
