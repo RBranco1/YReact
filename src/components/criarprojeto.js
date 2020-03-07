@@ -10,16 +10,19 @@ class ModalModalExample extends Component{
       usuario:"",
       descricao:""
     }
-
-
-
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
-  handleInputChange = ({target}) => this.setState();
-  handleSubmit(evento){
-    evento.preventDefault()
-  };
+  handleInputChange({target:{name}, target:{value}}){
+    this.setState({[name]: value}) 
+  }
+
+  handleSubmit(evento) {
+    evento.preventDefault();
+    this.props.inserirProjeto(this.state);
+  }
 
 
 
@@ -29,14 +32,30 @@ class ModalModalExample extends Component{
     <Modal.Header>Esta pronto para essa aventura?</Modal.Header>
     <Modal.Content image>
       <Image wrapped size='medium' src={sunflower}  />  
+
     <Form onSubmit={this.handleSubmit}>
+
       <Form.Input name="nome" 
       values={this.state.nome} 
       onChange={this.handleInputChange}
       label="Nome do projeto" />
-      <Form.Input name="autor" values={this.state.usuario} label="Autor do projeto" />
-      <Form.TextArea name="descricao" values={this.state.descricao} label="Descrição do projeto" />
-      <Button color="teal">Bora!</Button>
+
+      <Form.Input name="autor" 
+      values={this.state.user} 
+      onChange={this.handleInputChange}
+      label="Autor do projeto" />
+
+      <Form.TextArea name="descricao" 
+      values={this.state.descricao} 
+      onChange={this.handleInputChange}
+      label="Descrição do projeto" />
+
+      <Button 
+      color="teal" 
+      type="submit" 
+      onClick={this.handleSubmit}>Bora!
+      </Button>
+
     </Form>
     </Modal.Content>
   </Modal>

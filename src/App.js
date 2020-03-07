@@ -31,9 +31,8 @@ class App extends Component {
       })
   }
 
-  inserirProjeto() {
+  inserirProjeto = projeto => this.setState({lista: [...this.state.lista, projeto]})
 
-  }
 
   render() {
     return (
