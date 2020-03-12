@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '/api';
 
 import avatar from '../images/avatar.png';
 
@@ -25,11 +26,14 @@ class Card extends Component{
 
    addLike(){
     let likes = parseInt(this.state.likes) + 1;
-    this.setState({likes:likes})
-  console.log(likes)
 
-
-   }
+    api.put(
+      `projetos/${this.props.id}`, JSON.stringify({likes: likes})       
+      )
+      .then(function() {
+        this.setState({ likes: result.likes });
+      })
+}
 
 
     render(){
